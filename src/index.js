@@ -27,7 +27,7 @@ class QuizReact extends Component {
             });
         }    
         this.setState({
-            responses: this.state.responses < 5 ? this.state.responses + 1 : 5
+            responses: this.state.responses < 10 ? this.state.responses + 1 : 10
         });    
     };
 
@@ -50,18 +50,18 @@ class QuizReact extends Component {
                 <div className="title"> Quiz en React </div>
 
                 {this.state.quizSelect1.length > 0 &&
-                 this.state.responses < 5 &&
+                 this.state.responses < 10 &&
                  this.state.quizSelect1.map(
-                     ({question, answers, correct, questionId}) => (
+                     ({question, answers, correct, /*questionId */}) => (
                          <QuestionBox 
                          question = {question}
                          options = {answers} 
-                         key = {questionId}
+                        //  key = {questionId}
                          selected = {answer => this.computeAnswer(answer, correct)} />
                      )
                  )}
 
-                {this.state.responses === 5 ? 
+                {this.state.responses === 10 ? 
                 (<Result score={this.state.score} playAgain={this.playAgain} />)
                 : null}                    
 
