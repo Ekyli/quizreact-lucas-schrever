@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import "./assets/style.css";
-import quizSelect1 from "./quizSelect";
+import "./assets/style.scss";
+import Header from "./components/header";
+import quizSelect1 from "./quizSelect";                // Données du quiz
 import QuestionBox from "./components/questionBox";
 import Result from "./components/result";
 
@@ -45,18 +46,21 @@ class QuizReact extends Component {
 
     render() {
         return (
+
             <div className="container">
+
+            <Header />
 
                 <div className="title"> Quiz en React </div>
 
                 {this.state.quizSelect1.length > 0 &&
                  this.state.responses < 10 &&
                  this.state.quizSelect1.map(
-                     ({question, answers, correct, /*questionId */}) => (
+                     ({question, answers, correct, questionId}) => (
                          <QuestionBox 
                          question = {question}
                          options = {answers} 
-                        //  key = {questionId}
+                         key = {questionId}
                          selected = {answer => this.computeAnswer(answer, correct)} />
                      )
                  )}
